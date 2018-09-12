@@ -1,0 +1,48 @@
+<p *ngIf="isShow">
+  struct works!
+</p>
+<!-- <ul>
+  <li *ngFor="let x of arr">
+    {{x}}
+  </li>
+</ul> -->
+<div *ngIf="showForm" class="form">
+  <input placeholder="Name" [(ngModel)]="txtname">
+  <br>
+  <input placeholder="Action" [(ngModel)]="txtaction">
+  <br>
+  <button (click)="add();"> Add </button>
+</div>
+<button (click)="showForm = true" *ngIf="!showForm"> Add </button>
+<select [(ngModel)]="fillterData">
+  <option value="all">Xem tất cả</option>
+  <option value="study">study</option>
+  <option value="read">read</option>
+</select>
+<div>
+  <table>
+    <tr>
+      <th>STT</th>
+      <th>Name</th>
+      <th>Action</th>
+      <th>Option</th>
+      <th>Khác</th>
+    </tr>
+
+    <tr *ngFor="let x of arr">
+      <!-- <div  *ngIf="selectAction(x.start)" > -->
+      <td>{{x.id}}</td>
+      <td>{{x.name}}</td>
+      <td>{{x.action}}</td>
+      <td>{{x.start}}</td>
+      <td>
+        <button (click)="Edit();">Edit</button>
+        <button (click)="Delete(x.id);">Delete</button>
+      </td>
+      <!-- </div> -->
+    </tr>
+  </table>
+</div>
+<button (click)="isShow = !isShow">Sent</button>
+
+

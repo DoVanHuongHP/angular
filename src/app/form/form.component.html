@@ -1,0 +1,37 @@
+<form (ngSubmit)="onSubmit(form);" #form="ngForm" class="wrapper">
+  <label>Email: </label> <br>
+  <input
+    placeholder="enter email" 
+    #txtEmail="ngModel" 
+    ngModel 
+    name='email' 
+    required
+    email
+  >
+  <br>
+  <!-- khi người dùng touch thì mới thông báo -->
+  <!-- #txtEmail: form.controls.email -->
+  <p *ngIf='txtEmail.touched && txtEmail.errors?.required'>Please enter email</p>
+  <p *ngIf='txtEmail.touched && txtEmail.errors?.email'>Please enter email</p>
+  <label>Password: </label> <br>
+  <input 
+    type="password"
+    placeholder="enter password" 
+    #txtPassword="ngModel"
+    ngModel 
+    name='password'
+    required
+    minlength="6"
+   
+  >
+  <br>
+  <p *ngIf='txtPassword.touched && txtPassword.errors?.required'>Please enter password</p>
+  <p *ngIf='txtPassword.touched && txtPassword.errors?.minlength'>Min password is 6 </p>
+  <br>
+  <div ngModelGroup="object"  >
+    <label><input type="checkbox" ngModel  name="nam">Nam </label>
+    <label><input type="checkbox" ngModel  name="nu">Nu </label>
+  </div>
+  <br>
+  <button [disabled]="form.invalid"> Submit </button>
+</form>

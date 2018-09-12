@@ -1,0 +1,20 @@
+<form (ngSubmit)="onSubmit();"  [formGroup]=" formReacttive " class="wrapper" >
+  <label>Email: </label> <br>
+  <input placeholder="enter email" formControlName='email'>
+  <p *ngIf="formReacttive.get('email').invalid && formReacttive.get('email').touched">Email required</p>
+  <br>
+  <label>Password: </label> <br>
+  <input type="password" placeholder="enter password" formControlName='password'>
+  <p *ngIf="formReacttive.get('password').required && formReacttive.get('password').touched">Password required</p>
+  <p *ngIf="formReacttive.get('password').touched && formReacttive.get('password').invalid.minlength">Password must be a least 6 </p>
+  <br>
+  <br>
+  <div formGroupName="object">
+    <label><input type="checkbox" name="nam" formControlName="nam">Nam</label>
+    <label><input type="checkbox" name="nu" formControlName="nu">Nu</label>
+  </div>
+  <br>
+  <button disabled="formReacttive.invalid"> Submit </button>
+</form>
+
+ <!-- thay controls.email bằng phương thức get('email') -->

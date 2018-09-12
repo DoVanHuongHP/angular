@@ -1,0 +1,46 @@
+<form (ngSubmit)="onSubmit(formLogin);" #formLogin ="ngForm">
+  <label>Email: </label> <br>
+  <input
+    placeholder="enter email" 
+    #txtEmail="ngModel" 
+    ngModel 
+    name='email' 
+    required
+    email
+  ><br>
+  <label>Username: </label> <br>
+  <input 
+    placeholder="enter username123" 
+    #txtName="ngModel" 
+    ngModel 
+    name='username' 
+    required
+  >
+  <br>
+  <button> Add </button>
+</form>
+<button (click)="onShow();">Show</button>  
+<div>
+  <table>
+    <tr>
+      <th>STT</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Khác</th>
+    </tr>
+
+    <tr *ngFor="let x of data">
+      <td>{{x.id}}</td>
+      <td>{{x.name}}</td>
+      <td>{{x.email}}</td>
+      <td>
+        <button (click)="Edit(x.id);">Edit</button>
+        <button (click)="Delete(x.id);">Delete</button>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+
+

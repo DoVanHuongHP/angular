@@ -1,0 +1,17 @@
+<!-- <p>
+  test works!
+</p> -->
+
+<!-- event binding: thực hiên 1 hnahf dộng nào đó
+keyup: thực thi hành động sau khi kết thúc bàn phím
+$event: nhận vào các dữ liệu -->
+<!-- <input placeholder="Vui lòng nhập" (keyup)="show($event)" #text />
+<p [style.color]= "name.length % 2 === 0 ? 'red' : 'black'" >Name is: {{name}} </p>
+<code>{{text.value| json}}</code> -->
+<!-- two way data binding  -->
+<input placeholder="Vui lòng nhập" [(ngModel)]="name" #text>
+<p [ngStyle]="name.length % 2 === 0 ? odd : even ">Name is: {{name}} </p> 
+<code>{{text.value|json}}</code>
+
+<!-- <div [class.circle]="!isHighLight ? 'circle':'square'"></div> -->
+<div [ngClass]=" currentHighLight"></div>

@@ -1,0 +1,16 @@
+.form{
+    margin: 30px;
+    color: blueviolet
+}
+table {
+    font-family: arial, sans-serif;
+    border: solid 1px #000;
+    width: 100%;
+}
+
+td, th{
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  
+}
