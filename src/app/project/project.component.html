@@ -1,0 +1,27 @@
+<button (click)="onShow();">Show</button>  
+<button (click)="onShow1();">Show1</button>  
+<!-- <button (click)="onShowPosts();">Show2</button>  
+<button (click)="onShowPut();">Show3</button>  
+<button (click)="onShowPatch();">Show4</button>  
+<button (click)="onShowAll();">Show</button>  -->
+<div >
+  <table >
+    <tr style="text-align: center" >
+      <th class="body">STT</th>
+      <th class="body">Name/Title</th>
+      <th class="body">Email/Body</th>
+      <th class="body">Khác</th>
+    </tr>
+    <tr *ngFor="let x of data | paginate: { itemsPerPage: 5, currentPage: p }">
+      <td class="body">{{x.id}}</td>
+      <td class="body">{{x.name || x.title}}</td>
+      <td class="body">{{x.email || x.body}}</td>
+      <td class="body">
+        <button (click)="Delete(x.id);">Delete</button>
+      </td>
+    </tr>
+  
+  </table>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+
