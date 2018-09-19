@@ -21,6 +21,7 @@ import { FormReactiveComponent } from './form-reactive/form-reactive.component';
 
 import { LoginComponent } from './login/login.component';
 import { ProjectComponent } from './project/project.component';
+import { RegisterComponent } from './register/register.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +36,8 @@ import { ProjectComponent } from './project/project.component';
     FormComponent,
     FormReactiveComponent,
     LoginComponent,
-    ProjectComponent
+    ProjectComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
