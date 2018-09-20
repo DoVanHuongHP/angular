@@ -2,6 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { NgxPaginationModule} from 'ngx-pagination';
+import {Routes, RouterModule} from '@angular/router';
+
+const routeConfig: Routes=[
+  {path:"register", component: RegisterComponent},
+  {path:"promise", component: ProjectComponent},
+]
 
 
 import { AppComponent } from './app.component';
@@ -44,7 +50,8 @@ import { RegisterComponent } from './register/register.component';
     FormsModule,
     HttpModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    RouterModule.forRoot(routeConfig),
    
   ],
   providers: [],

@@ -1,10 +1,10 @@
-<form (ngSubmit)="onSubmit();" [formGroup]=" formReactive " class="wrapper">
+<form (ngSubmit)="onSubmit();" [formGroup]="formReactive " class="wrapper">
   <legend style="text-align: center; color: blue; border-bottom: 2px solid #000000">LOGIN</legend>
   <div>
     <label>Name: </label>
     <br>
     <input placeholder="Enter Name" formControlName='name'>
-    <p *ngIf="formReactive.get('name').invalid && formReactive.get('name').touched">Name required</p>
+    <p style="color: red" *ngIf="formReactive.get('name').invalid && formReactive.get('name').touched">Name required</p>
     <br>
   </div>
 
@@ -12,8 +12,8 @@
     <label>Email: </label>
     <br>
     <input placeholder="Enter Email" formControlName="email">
-    <p *ngIf="formReactive.get('email').errors?.required  && formReactive.get('email').touched">Email required</p>
-    <p *ngIf="formReactive.get('email').errors?.email  && formReactive.get('email').touched">Please re-enter Email</p>
+    <p style="color: red" *ngIf="formReactive.get('email').errors?.required  && formReactive.get('email').touched">Email required</p>
+    <p style="color: red" *ngIf="formReactive.get('email').errors?.email  && formReactive.get('email').touched">Please re-enter Email</p>
     <br>
   </div>
 
@@ -21,8 +21,8 @@
     <label>Password: </label>
     <br>
     <input type="password" placeholder="Enter Password" formControlName='password'>
-    <p *ngIf="formReactive.get('password').errors?.required && formReactive.get('password').touched">Password required</p>
-    <p *ngIf="formReactive.get('password').errors?.minlength && formReactive.get('password').touched">Password must be a least 6 </p>
+    <p style="color: red" *ngIf="formReactive.get('password').errors?.required && formReactive.get('password').touched">Password required</p>
+    <p style="color: red" *ngIf="formReactive.get('password').errors?.minlength && formReactive.get('password').touched">Password must be a least 6 </p>
     <br>
   </div>
 
@@ -30,8 +30,8 @@
     <label>Confirm Password: </label>
     <br>
     <input type="password" placeholder="Enter Confirm Password" formControlName='confirm'>
-    <p *ngIf="formReactive.get('confirm').invalid && formReactive.get('confirm').touched">*Password and confirm password should match</p>
-    <p *ngIf="formReactive.get('confirm').errors?.required && formReactive.get('confirm').touched">*Password and confirm 123 password should match</p>
+    <p style="color: red" *ngIf="formReactive.get('confirm').invalid && formReactive.get('confirm').touched">*Password and confirm password should match</p>
+    <p style="color: red" *ngIf="formReactive.get('confirm').errors?.required && formReactive.get('confirm').touched">*Confirm password required</p>
     <br>
   </div>
 
@@ -40,15 +40,18 @@
     <br>
     <img>
     <input type="file" formControlName='img'>
-    <p *ngIf="formReactive.get('img').errors?.required && formReactive.get('img').touched">Image required</p>
+    <p style="color: red" *ngIf="onCheckImg();">{{ErrorImg}}</p>
   </div>
 
+  <div>
     <label>Gender</label>
     <br>
     <label>
       <input type="radio" formControlName="gender" value="male">Male</label>
     <label>
       <input type="radio" formControlName="gender" value="female">Female</label>
+    <p *ngIf="onCheckGender();" style="color: red">{{Error}}</p>
+  </div>
 
 
   <div formGroupName="hobby">
@@ -66,7 +69,8 @@
     <label>
       <input type="checkbox" name="readingbook" formControlName="readingbook">Reading Book</label>
     <br>
+    <p *ngIf="onCheckHobby();" style="color: red">{{Error}}</p>
   </div>
   <br>
-  <button> Submit </button>
+  <button [disabled]="formReactive.invalid"> Submit </button>
 </form>

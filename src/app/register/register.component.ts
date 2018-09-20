@@ -6,6 +6,7 @@ import{ passValidator } from './validator'
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
+ 
 })
 export class RegisterComponent implements OnInit {
 
@@ -20,13 +21,13 @@ export class RegisterComponent implements OnInit {
       email: ['',[Validators.required,Validators.email]],
       password: ['',[Validators.required, Validators.minLength(6)]],
       confirm: ['',[Validators.required,passValidator]],
-      img: ['',[Validators.required]],
+      img: [''],
       gender :[],
       hobby:this.formBuilder.group({
         game: false,
         sport: false,
         readingbook: false,
-        travel: true
+        travel: false,
       })
     });
     this.formReactive.controls.password.valueChanges
@@ -35,5 +36,35 @@ export class RegisterComponent implements OnInit {
   onSubmit(){
     console.log(this.formReactive.value);
   }
+
+  Error ='';
+  ErrorImg ='';
+
+  onCheckImg(){
+    if(this.formReactive.value.img === ''){
+      this.ErrorImg = "Please choose image! Image required";
+      return true;
+    }
+    return false
+  }
+  onCheckGender(){
+    if(this.formReactive.value.gender === null  ) 
+    {
+      this.Error = "You must select at least one option";
+      return true;
+    }
+    return false;
+  }
+  onCheckHobby(){
+    if(!this.formReactive.value.hobby.game && !this.formReactive.value.hobby.sport && !this.formReactive.value.hobby.readingbook && !this.formReactive.value.hobby.travel) 
+    {
+      this.Error = "You must select at least one option";
+      return true;
+    }
+    return false;
+  }
+
+  
+
 
 }
