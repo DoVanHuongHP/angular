@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators,FormControl } from '@angular/forms';
 import{ passValidator } from './validator'
 
 @Component({
@@ -41,18 +41,22 @@ export class RegisterComponent implements OnInit {
   ErrorImg ='';
 
   onCheckImg(){
-    if(this.formReactive.value.img === ''){
-      this.ErrorImg = "Please choose image! Image required";
+    let image = this.formReactive.value.img;
+    let ext = image.substring(image.lastIndexOf(".")+1);
+    if(this.formReactive.value.img === ''||ext.toLowerCase() !== 'png'){
+      this.ErrorImg = "Please choose image!";
       return true;
     }
+   
     return false
   }
   onCheckGender(){
-    if(this.formReactive.value.gender === null  ) 
+    if(this.formReactive.value.gender === null) 
     {
       this.Error = "You must select at least one option";
       return true;
     }
+    
     return false;
   }
   onCheckHobby(){
@@ -64,6 +68,7 @@ export class RegisterComponent implements OnInit {
     return false;
   }
 
+  
   
 
 

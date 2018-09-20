@@ -1,14 +1,14 @@
-import { AbstractControl } from '@angular/forms';
+import { AbstractControl, FormControl } from '@angular/forms';
 import { isError } from 'util';
 
-export function passValidator(control: AbstractControl){
-    if(control && control.value !== null){
+export function passValidator(control: AbstractControl) {
+    if (control && control.value !== null) {
         const confirm = control.value;
         const pass = control.root.get('password');
-        if(pass) {
+        if (pass) {
             const password = pass.value;
-            
-            if(password !== confirm){
+
+            if (password !== confirm) {
                 return {
                     isError: true,
                 };
@@ -17,5 +17,4 @@ export function passValidator(control: AbstractControl){
     }
     return null;
 }
-
 

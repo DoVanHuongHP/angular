@@ -16,7 +16,7 @@ export class ProjectService {
             return this.http.get(url).subscribe(
                 (data => {
                     resolve(data.json());
-                    // console.log(data.json());
+                    console.log(data.json());
                 }),
                 err => reject(err)
             )
